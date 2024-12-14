@@ -3,15 +3,14 @@ project:
   output-dir: docs
 
 execute:
-  echo: true
-
+  echo: false
+  warning: false
+  
 book:
-  title: "YOUR PROJECT TITLE"
+  title: "Examining Life Expectancy"
   author:
-    - AUTHOR1 (UNI1)
-    - AUTHOR2 (UNI2)
-  repo-url: https://github.com/YOUR_GITHUB_ACCOUNT/REPO_NAME
-  date: today
+    - Tenzin Latoe
+  repo-url: https://github.com/tenzinl/longevity
   page-footer:
     right: |
       This book was built with <a href="https://quarto.org/">Quarto</a>.
@@ -20,12 +19,11 @@ book:
     - index.qmd
     - data.qmd
     - results.qmd
-    - d3graph.qmd
     - conclusion.qmd
-
+    
 format:
   html:
-    theme: cosmo
+    theme: minty
     code-fold: true
-
+    
 

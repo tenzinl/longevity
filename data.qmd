@@ -1,5 +1,23 @@
-# Data
+# Methodology
 
-## Description
+## Data
 
-## Missing value analysis
+The data set used was “Life Expectancy (WHO) Fixed” found on Kaggle, which sourced the information from The Global Health Observatory data repository under World Health Organization. The data set provides life expectancy, health, immunization, economic, and demographic data for 179 countries from 2000 – 2015. The data set contained 21 variables and 2864 observations. 
+
+This project will explore the following variables:
+
+Dependent Variable: 
+
+Life expectancy: Average life expectancy, in years, for both men and women.
+
+Independent Variables:
+
+GDP per capita: Gross domestic product per US dollars, per capita.
+Alcohol consumption: Consumption recorded per capita in liters of alcohol.
+Immunization Index: Represents % of coverage of vaccination among 1 year olds.
+BMI: Average BMI of population which is weight (kg)/ height
+Developed vs Developing: Each country's defining itself as "developed" or "developing" according to World Trade Organization. 
+
+## Design and Methods
+
+This project uses linear regression as the main method of analysis by analyzing the relationship between the independent variables with the dependent variables. To visualize the data, several plots and graphs are included. Box plots, bar charts, summary statistics table, and line plots are used to enhance understanding of the data analysis. 

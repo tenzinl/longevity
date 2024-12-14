@@ -2,22 +2,101 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "YOUR PROJECT TITLE",
+    "title": "Examining Life Expectancy",
     "section": "",
-    "text": "1 Introduction"
+    "text": "1 Introduction\nLife expectancy is a statistical projection of the number of years a person can expect to live and is an important measure of a population’s general health and well being. It is a mortality measure that can provide significant insights into a country’s social and economics conditions, as well as the effectiveness of it’s healthcare systems. Research into life expectancy can potentially highlight areas that may need intervention to address any disparities and inequalities that may exists. Additionally, it can guide efforts to improve health outcomes by addressing areas where change may be needed in public health.\nIn the last century, life expectancy has steadily increased in most countries, and is a result of ongoing process in improvements in health[1]. The advancement in technology, medical health, and higher standard of living have contributed to this positive trend. According to Riley(2001), increasing longevity can be achieved by improving six key areas: public health, medicine, wealth and income, nutrition, behavior, and education[2]. In a 2020 study by The Journals of Gerontology, wealth was noted as the most crucial factor in longevity and health[3]. Wealth allow access to better healthcare and healthier lifestyles,which can lead to longer, healthier lives.\n\n\n2 Research Context and Purpose\nWhile the link between wealth and life expectancy has been established, the interplay between economic and and environmental factors across countries worldwide is what this study aims to explore. By analyzing the relationship, this research hope the members of the general population who are interested in topics involving health and longevity can identify key factors influencing life expectancy and make informed decisions to adopt healthier lifestyles.\nIn this project, the research question I aim to examine is: How do economic and environmental factors affect life expectancy across different countries?",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
   },
   {
-    "objectID": "data.html#description",
-    "href": "data.html#description",
-    "title": "2  Data",
-    "section": "2.1 Description",
-    "text": "2.1 Description"
+    "objectID": "data.html",
+    "href": "data.html",
+    "title": "2  Methodology",
+    "section": "",
+    "text": "2.1 Data\nThe data set used was “Life Expectancy (WHO) Fixed” found on Kaggle, which sourced the information from The Global Health Observatory data repository under World Health Organization. The data set provides life expectancy, health, immunization, economic, and demographic data for 179 countries from 2000 – 2015. The data set contained 21 variables and 2864 observations.\nThis project will explore the following variables:\nDependent Variable:\nLife expectancy: Average life expectancy, in years, for both men and women.\nIndependent Variables:\nGDP per capita: Gross domestic product per US dollars, per capita. Alcohol consumption: Consumption recorded per capita in liters of alcohol. Immunization Index: Represents % of coverage of vaccination among 1 year olds. BMI: Average BMI of population which is weight (kg)/ height Developed vs Developing: Each country’s defining itself as “developed” or “developing” according to World Trade Organization.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Methodology</span>"
+    ]
   },
   {
-    "objectID": "data.html#missing-value-analysis",
-    "href": "data.html#missing-value-analysis",
-    "title": "2  Data",
-    "section": "2.2 Missing value analysis",
-    "text": "2.2 Missing value analysis"
+    "objectID": "data.html#design-and-methods",
+    "href": "data.html#design-and-methods",
+    "title": "2  Methodology",
+    "section": "2.2 Design and Methods",
+    "text": "2.2 Design and Methods\nThis project uses linear regression as the main method of analysis by analyzing the relationship between the independent variables with the dependent variables. To visualize the data, several plots and graphs are included. Box plots, bar charts, summary statistics table, and line plots are used to enhance understanding of the data analysis.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Methodology</span>"
+    ]
+  },
+  {
+    "objectID": "results.html",
+    "href": "results.html",
+    "title": "3  Results",
+    "section": "",
+    "text": "3.1 Average Life Expectancy:\nLife expectancy generally increased across all regions from 2000 to 2015. Disparities can be observed, such as European Regions and North America consistently had the highest life expectancy, while Africa had the lowest.\nHighs and Lows:\nAfrica: The highest average life expectancy was in 2015 at 62.46 years, while the lowest was in 2000 at 54.13 years.\nAsia: The highest average life expectancy was in 2015 at 71.98 years, while the lowest was in 2000 at 66.64 years.\nCentral America and Caribbean: The highest average life expectancy was in 2015 at 73.91 years, while the lowest was in 2000 at 70.84 years.\nEuropean Union: The highest average life expectancy was in 2015 at 79.51 years, while the lowest was in 2000 at 75.74 years.\nMiddle East: The highest average life expectancy was in 2015 at 75.27 years, while the lowest was in 2000 at 72.30 years.\nNorth America: The highest average life expectancy was in 2015 at 78.50 years, while the lowest was in 2000 at 76.66 years.\nOceania: The highest average life expectancy was in 2015 at 71.17 years, while the lowest was in 2000 at 67.51 years.\nRest of Europe: The highest average life expectancy was in 2015 at 76.38 years, while the lowest was in 2000 at 72.81 years.\nSouth America: The highest average life expectancy was in 2015 at 74.46 years, while the lowest was in 2000 at 70.80 years.\nLife Expectancy Differences Across Regions Over the Years\n\n\nDisplaying the maximum, minimum, and differences in life expectancy\n\n\nYear\nHighest Life Expectancy\nLowest Life Expectancy\nDifference (Years)\n\n\n\n\n2000\n76.67\n54.14\n22.53\n\n\n2001\n76.93\n54.36\n22.57\n\n\n2002\n77.10\n54.59\n22.51\n\n\n2003\n77.27\n54.96\n22.30\n\n\n2004\n77.53\n55.45\n22.08\n\n\n2005\n77.67\n55.96\n21.71\n\n\n2006\n77.77\n56.57\n21.20\n\n\n2007\n77.93\n57.24\n20.69\n\n\n2008\n77.97\n57.93\n20.03\n\n\n2009\n78.17\n58.63\n19.54\n\n\n2010\n78.40\n59.33\n19.07\n\n\n2011\n78.87\n60.00\n18.88\n\n\n2012\n78.94\n60.70\n18.24\n\n\n2013\n79.29\n61.31\n17.98\n\n\n2014\n79.61\n61.91\n17.70\n\n\n2015\n79.51\n62.47\n17.04\n\n\n\nData analyzed from the Life Expectancy dataset (2000-2015).\nOverall, for all regions, the highest life expectancy and lowest life expectancy increased consistently from 2000 to 2015. The difference in life expectancy also decreased every year.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Results</span>"
+    ]
+  },
+  {
+    "objectID": "results.html#highest-and-lowest",
+    "href": "results.html#highest-and-lowest",
+    "title": "3  Results",
+    "section": "3.2 Highest and Lowest",
+    "text": "3.2 Highest and Lowest\n\n\n\n\n\n\n\n\n\nThe top 20 countries with the highest and lowest life expectancy are displayed. Countries with the highest life expectancy are generally known for their healthcare system, public health infrastructure, high GDP, and low rates of communicable diseases. Countries with the lowest life expectancy are all countries in Africa and is consistent with the average life expectancy across regions results previously observed.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Results</span>"
+    ]
+  },
+  {
+    "objectID": "results.html#economic-status",
+    "href": "results.html#economic-status",
+    "title": "3  Results",
+    "section": "3.3 Economic Status",
+    "text": "3.3 Economic Status\n\n\n\n\n\n\nAnalysis of “Developing” and “Developed” countries reflect a noticeable difference in life expectancy. The life expectancy is higher in developed countries when compared to developing countries. The median age for developing countries is 69 years while developed countries is 79 years.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Results</span>"
+    ]
+  },
+  {
+    "objectID": "results.html#gdp",
+    "href": "results.html#gdp",
+    "title": "3  Results",
+    "section": "3.4 GDP",
+    "text": "3.4 GDP\n\n\n\n\n\n\n\n\n\nThe scatter plot shows the relationship between GDP and life expectancy across different regions.The line of best fit indicates a upward trend of life expectancy increasing as GDP increases, which suggests a positive correlation with GDP and life expectancy.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Results</span>"
+    ]
+  },
+  {
+    "objectID": "results.html#alcohol-consumption",
+    "href": "results.html#alcohol-consumption",
+    "title": "3  Results",
+    "section": "3.5 Alcohol Consumption",
+    "text": "3.5 Alcohol Consumption\n\n\n\n\n\n\n\n\n\nThe relationship between alcohol consumption and life expectancy is displayed, with the line of best fit indicating a weak positive correlation between alcohol consumption and life expectancy. Although it appears to suggest higher alcohol consumption is associated with higher life expectancy, but other variables may explain the variation is life expectancy. This could suggest that alcohol consumption may correlate with wealthier countries which generally have higher life expectancy.\n\n\n\n\n\n\n\n\n\nThe scatter plot includes regression line for each region and provides trends in life expectancy as it relates in alcohol consumption. As observed previously, there is a weak positive correlation; however, the regression lines vary by region. For Africa, the regression line is fairly flat, which suggest alcohol consumption has little to no impact on life expectancy. On the other hand, regions with higher life expency, such as North America and Europe, display a positive slope indicating a moderate increase in life expectancy as alcohol consumption increases.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Results</span>"
+    ]
+  },
+  {
+    "objectID": "results.html#bmi",
+    "href": "results.html#bmi",
+    "title": "3  Results",
+    "section": "3.6 BMI",
+    "text": "3.6 BMI\n\n\n\n\n\n\nThe BMI values for all regions are shown, which range from 20 to 32 BMI. Africa had the lowest BMI median of 22.90, while North America has the highest median of 27.35.\n\n\n\n\n\n\nThe box plots display the distributions of life expectancy by BMI across all regions. BMI is categorized into “Healthy” (ranging from 18.5 and 24.9) and “Unhealthy” (below 18.5 or above 24.9). Across all regions, “Healthy” BMI generally shows a higher life expectancy compared to “Unhealthy” BMI. European Union and Rest of Europe had the highest median age of approximately 80 years for “Healthy” BMI. The highest unhealthy median age for “Unhealthy” BMI was European Union and North America at approximately 78 years. Interestingly, there were no “Healthy” BMI observed for North America.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Results</span>"
+    ]
+  },
+  {
+    "objectID": "conclusion.html",
+    "href": "conclusion.html",
+    "title": "4  Conclusion",
+    "section": "",
+    "text": "This project aimed to examine how economic and environmental factors affect life expectancy. Analysis of GDP, alcohol consumption, BMI, and immunization revealed how these variables influence life expectancy. Higher GDP, healthy BMI, and higher immunization generally correlated with a higher life expectancy. Interestingly, alcohol consumption also revealed a positive correlation with high life expectancy, although the relationship was nuanced and region dependent. The implications of these findings can help reveal global disparities. The results also suggest economic growth, improving health care (like immunization), and a healthy lifestyle that can lead to a health BMI, are all factors that improved life expectancy.\nOne of the limitations for this project was that it relies on a single data set with limited variables. The data set also only provided information only up to 2015, and may not reflect a shift in life expectancy over the past decade. For future research, incorporating additional variables, such as health care access, education, and lifestyle can provide a more holistic view of variables affecting life expectancy.\n\n5 References\nData: https://www.kaggle.com/datasets/lashagoch/life-expectancy-who-updated\n[1]Vaupel JW. 2010. Biodemography of human ageing. Nature 464: 536–542. [2] Riley JC. Rising Life Expectancy: A Global History. Cambridge Univ. Press; 2001. [3] Zaninotto P, Batty GD, Stenholm S, Kawachi I, Hyde M, Goldberg M, Westerlund H, Vahtera J, Head J. 2020. Socioeconomic inequalities in disability-free life expectancy in older people from England and the United States:\nSoftware: R-Studio. Packages used: ggplot, ggplot2, knitr, lmtest, dplyr, plotly, gt, and broom. Free template: jtr13.github.io/quarto-edav-template/",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Conclusion</span>"
+    ]
   }
 ]

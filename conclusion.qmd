@@ -1,1 +1,22 @@
 # Conclusion
+
+This project aimed to examine how economic and environmental factors affect life expectancy. Analysis of GDP, alcohol consumption, BMI, and immunization revealed how these variables influence life expectancy. Higher GDP, healthy BMI, and higher immunization generally correlated with a higher life expectancy. Interestingly, alcohol consumption also revealed a positive correlation with high life expectancy, although the relationship was nuanced and region dependent. The implications of these findings can help reveal global disparities. The results also suggest economic growth, improving health care (like immunization), and a healthy lifestyle that can lead to a health BMI, are all factors that improved life expectancy. 
+
+One of the limitations for this project was that it relies on a single data set with limited variables. The data set also only provided information only up to 2015, and may not reflect a shift in life expectancy over the past decade. For future research, incorporating additional variables, such as health care access, education, and lifestyle can provide a more holistic view of variables affecting life expectancy. 
+
+# References
+
+Data: 
+https://www.kaggle.com/datasets/lashagoch/life-expectancy-who-updated
+
+[1]Vaupel JW. 2010. Biodemography of human ageing. Nature 464: 536–542.
+[2] Riley JC. Rising Life Expectancy: A Global History. Cambridge Univ. Press; 2001.
+[3] Zaninotto P, Batty GD, Stenholm S, Kawachi I, Hyde M, Goldberg M, Westerlund H, Vahtera J, Head
+J. 2020. Socioeconomic inequalities in disability-free life expectancy in older people from England and the
+United States:
+
+Software: R-Studio. 
+Packages used: ggplot, ggplot2, knitr, lmtest, dplyr, plotly, gt, and broom. 
+Free template: jtr13.github.io/quarto-edav-template/
+
+

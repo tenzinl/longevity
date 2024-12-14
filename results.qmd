@@ -1,1 +1,323 @@
+
 # Results
+
+
+```{r,echo: false}
+#Load libraries
+library(haven) 
+library(descr) 
+library(ggplot2)
+library(tidyr)
+library(knitr)
+library(lmtest)
+library(dplyr) 
+library(plotly)
+library(gt)
+library(broom)
+
+# Load data set
+life <- read.csv("Life-Expectancy.csv")
+
+```
+
+
+## Average Life Expectancy: 
+
+
+```{r}
+
+region_life_expectancy <- life %>%
+  group_by(Region, Year) %>% # Assuming "Year" is a column in the dataset
+  summarise(Average_Life_Expectancy = mean(Life_expectancy, na.rm = TRUE))
+
+interactive_plot <- ggplot(region_life_expectancy, aes(x = Year, y = Average_Life_Expectancy, color = Region, group = Region)) +
+  geom_line(size = 1) +
+  geom_point(size = 2) +
+  labs(
+    title = "Average Life Expectancy by Region from 2000-2015",
+    x = "Year",
+    y = "Average Life Expectancy",
+    color = "Region"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 12),
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    legend.position = "bottom"
+  )
+
+# Convert ggplot object to an interactive plotly plot
+interactive_plotly <- ggplotly(interactive_plot, tooltip = c("x", "y", "color"))
+
+interactive_plotly
+
+```
+
+Life expectancy generally increased across all regions from 2000 to 2015. Disparities can be observed, such as European Regions and North America consistently had the highest life expectancy, while Africa had the lowest. 
+
+Highs and Lows: 
+
+Africa: The highest average life expectancy was in 2015 at 62.46 years, while the lowest was in 2000 at 54.13 years. 
+
+Asia: The highest average life expectancy was in 2015 at 71.98 years, while the lowest was in 2000 at 66.64 years. 
+
+Central America and Caribbean: The highest average life expectancy was in 2015 at 73.91 years, while the lowest was in 2000 at 70.84 years. 
+
+European Union: The highest average life expectancy was in 2015 at 79.51 years, while the lowest was in 2000 at 75.74 years. 
+
+Middle East: The highest average life expectancy was in 2015 at 75.27 years, while the lowest was in 2000 at 72.30 years. 
+
+North America: The highest average life expectancy was in 2015 at 78.50 years, while the lowest was in 2000 at 76.66 years. 
+
+Oceania: The highest average life expectancy was in 2015 at 71.17 years, while the lowest was in 2000 at 67.51 years. 
+
+Rest of Europe: The highest average life expectancy was in 2015 at 76.38 years, while the lowest was in 2000 at 72.81 years. 
+
+South America: The highest average life expectancy was in 2015 at 74.46 years, while the lowest was in 2000 at 70.80 years. 
+
+
+
+```{r}
+extreme_life_expectancy <- region_life_expectancy %>%
+  group_by(Year) %>%
+  summarise(
+    Max_Life_Expectancy = max(Average_Life_Expectancy),
+    Min_Life_Expectancy = min(Average_Life_Expectancy),
+    Difference = Max_Life_Expectancy - Min_Life_Expectancy
+  )
+
+# Create a visually appealing table
+extreme_life_expectancy_table <- extreme_life_expectancy %>%
+  gt() %>%
+  tab_header(
+    title = "Life Expectancy Differences Across Regions Over the Years",
+    subtitle = "Displaying the maximum, minimum, and differences in life expectancy"
+  ) %>%
+  fmt_number(
+    columns = c(Max_Life_Expectancy, Min_Life_Expectancy, Difference),
+    decimals = 2
+  ) %>%
+  cols_label(
+    Year = "Year",
+    Max_Life_Expectancy = "Highest Life Expectancy",
+    Min_Life_Expectancy = "Lowest Life Expectancy",
+    Difference = "Difference (Years)"
+  ) %>%
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_column_labels(everything())
+  ) %>%
+  tab_source_note(
+    source_note = "Data analyzed from the Life Expectancy dataset (2000-2015)."
+  )
+
+# Display the table
+extreme_life_expectancy_table
+```
+
+Overall, for all regions, the highest life expectancy and lowest life expectancy increased consistently from 2000 to 2015. The difference in life expectancy also decreased every year. 
+
+## Highest and Lowest 
+
+```{r}
+# Identify countries with the highest and lowest life expectancy
+# Assuming `Country` and `Life_expectancy` are columns in your dataset
+top_countries <- life %>%
+  group_by(Country) %>%
+  summarise(Avg_Life_Expectancy = mean(Life_expectancy, na.rm = TRUE)) %>%
+  arrange(desc(Avg_Life_Expectancy)) %>%
+  slice_head(n = 20)  # Top 5 countries
+
+bottom_countries <- life %>%
+  group_by(Country) %>%
+  summarise(Avg_Life_Expectancy = mean(Life_expectancy, na.rm = TRUE)) %>%
+  arrange(Avg_Life_Expectancy) %>%
+  slice_head(n = 20)  # Bottom 5 countries
+
+# Combine top and bottom countries
+extreme_countries <- bind_rows(
+  top_countries %>% mutate(Category = "Highest Life Expectancy"),
+  bottom_countries %>% mutate(Category = "Lowest Life Expectancy")
+)
+
+# Create a bar plot
+ggplot(extreme_countries, aes(x = reorder(Country, Avg_Life_Expectancy), 
+                              y = Avg_Life_Expectancy, 
+                              fill = Category)) +
+  geom_bar(stat = "identity", show.legend = FALSE) +
+  facet_wrap(~ Category, scales = "free") +
+  coord_flip() +  # Flip coordinates for horizontal bars
+  scale_fill_manual(values = c("Highest Life Expectancy" = "lightblue", 
+                               "Lowest Life Expectancy" = "lightcoral")) +
+  labs(
+    title = "Countries with the Highest and Lowest Life Expectancies",
+    x = "Country",
+    y = "Average Life Expectancy"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 16),
+    axis.text.y = element_text(size = 10)
+  )
+```
+
+
+The top 20 countries with the highest and lowest life expectancy are displayed. Countries with the highest life expectancy are generally known for their healthcare system, public health infrastructure, high GDP, and low rates of communicable diseases. Countries with the lowest life expectancy are all countries in Africa and is consistent with the average life expectancy across regions results previously observed. 
+
+
+## Economic Status
+
+
+```{r}
+p <- ggplot(life, aes(
+  x = factor(Economy_status_Developed, labels = c("Developing", "Developed")),
+  y = Life_expectancy,
+  fill = factor(Economy_status_Developed)
+)) +
+  geom_boxplot() +
+  labs(
+    title = "Life Expectancy by Economy Status",
+    x = "Economy Status",
+    y = "Life Expectancy (Years)",
+    fill = "Economy Status"
+  ) +
+  theme_light() +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 16),
+    axis.text = element_text(size = 12),
+    axis.title = element_text(size = 14),
+    legend.position = "none"
+  )
+
+# Convert ggplot to an interactive plotly plot
+interactive_plot <- ggplotly(p, tooltip = c("x", "y"))
+interactive_plot
+
+```
+
+
+Analysis of "Developing" and "Developed" countries reflect a noticeable difference in life expectancy. The life expectancy is higher in developed countries when compared to developing countries. The median age for developing countries is 69 years while  developed countries is 79 years.  
+
+## GDP 
+
+```{r}
+ggplot(life, aes(x = log(GDP_per_capita), y = Life_expectancy, color = Region)) +
+  geom_point(alpha = 0.6) +
+  geom_smooth(method = "lm", se = FALSE, color = "black") +
+  labs(
+    title = "GDP vs. Life Expectancy by Region",
+    x = "GDP",
+    y = "Life Expectancy (Years)"
+  ) +
+  theme_minimal()
+```
+
+The scatter plot shows the relationship between GDP and life expectancy across different regions.The line of best fit indicates a upward trend of life expectancy increasing as GDP increases, which suggests a positive correlation with GDP and life expectancy. 
+
+
+## Alcohol Consumption 
+
+```{r}
+ggplot(life, aes(x = log(Alcohol_consumption + 1), y = Life_expectancy, color = Region)) +
+  geom_point(alpha = 0.7) +  # Scatter plot with transparency
+  geom_smooth(method = "lm", se = FALSE, color = "black", linetype = "dashed") +  # Overall trend line
+  labs(
+    title = "Alcohol Consumption vs Life Expectancy by Region",
+    x = "Alcohol Consumption (liters per capita)",
+    y = "Life Expectancy (Years)",
+    color = "Region"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 16),  # Centered title
+    axis.title = element_text(size = 14),
+    axis.text = element_text(size = 12)
+  )
+``` 
+The relationship between alcohol consumption and life expectancy is displayed, with the line of best fit indicating a weak positive correlation between alcohol consumption and life expectancy. Although it appears to suggest higher alcohol consumption is associated with higher life expectancy, but other variables may explain the variation is life expectancy. This could suggest that alcohol consumption may correlate with wealthier countries which generally have higher life expectancy. 
+
+```{r}
+ggplot(life, aes(x = log(Alcohol_consumption + 1), y = Life_expectancy, color = Region)) +
+  geom_point(alpha = 0.7) +
+  geom_smooth(method = "lm", se = FALSE) +  # Region-specific trend lines
+  labs(
+    title = "Alcohol Consumption vs Life Expectancy by Region",
+    x = "Alcohol Consumption (liters per capita)",
+    y = "Life Expectancy (Years)",
+    color = "Region"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 16),
+    axis.title = element_text(size = 14),
+    axis.text = element_text(size = 12)
+  )
+```
+The scatter plot includes regression line for each region and provides trends in life expectancy as it relates in alcohol consumption. As observed previously, there is a weak positive correlation; however, the regression lines vary by region. For Africa, the regression line is fairly flat, which suggest alcohol consumption has little to no impact on life expectancy. On the other hand, regions with higher life expency, such as North America and Europe, display a positive slope indicating a moderate increase in life expectancy as alcohol consumption increases. 
+
+## BMI
+
+
+```{r}
+p <- ggplot(life, aes(x = Region, y = BMI, fill = Region)) +
+  geom_boxplot() +
+  labs(
+    title = "Distribution of BMI Across Regions",
+    x = "Region",
+    y = "BMI",
+    fill = "Region"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 16),
+    axis.text.x = element_text(angle = 45, hjust = 1, size = 12),
+    axis.title = element_text(size = 14),
+    legend.position = "none"
+  )
+
+# Convert to interactive plot
+ggplotly(p, tooltip = c("x", "y", "fill"))
+```
+The BMI values for all regions are shown, which range from 20 to 32 BMI. Africa had the lowest BMI median of 22.90, while North America has the highest median of 27.35. 
+
+```{r}
+life <- life %>%
+  mutate(
+    BMI_Category = ifelse(BMI >= 18.5 & BMI <= 24.9, "Healthy", "Unhealthy")
+  )
+plot <- ggplot(life, aes(x = BMI_Category, y = Life_expectancy, color = BMI_Category)) +
+  geom_boxplot() +
+  facet_wrap(~ Region, scales = "free_y") +
+  labs(
+    title = "Life Expectancy by BMI Category Across Regions",
+    x = "BMI Category",
+    y = "Life Expectancy (Years)",
+    color = "BMI Category"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 16),
+    axis.text = element_text(size = 10),
+    axis.title = element_text(size = 12),
+    strip.text = element_text(size = 12),
+    legend.position = "none"
+  )
+
+# Convert ggplot to an interactive plotly object
+interactive_plot <- ggplotly(plot, tooltip = c("x", "y", "color"))
+
+# Display the interactive plot
+interactive_plot
+
+```
+
+The box plots display the distributions of life expectancy by BMI across all regions. BMI is categorized into "Healthy" (ranging from 18.5 and 24.9) and "Unhealthy" (below 18.5 or above 24.9). Across all regions, "Healthy" BMI generally shows a higher life expectancy compared to "Unhealthy" BMI. European Union and Rest of Europe had the highest median age of approximately 80 years for "Healthy" BMI. The highest unhealthy median age for "Unhealthy" BMI was European Union and North America at approximately 78 years. Interestingly, there were no "Healthy" BMI observed for North America. 
+
+
+
+
+
+
+
+
+
